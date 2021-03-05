@@ -98,7 +98,7 @@ router.get('/hashtag', async (req, res, next) => { // /hashtag로 get 요청하�
       posts = await hashtag.getPosts({ include: [{ model: User }] }); // 해시태그명 포함한 게시글들 가져옴 (user DB 포함)
     }
     return res.render('main', { // 응답 (렌더링)
-      title: `${query} | My Used Market 🏠`,
+      title: `${query} | 우리의 감성`,
       user: req.user,
       twits: posts, // twits에 해시태그명 포함한 게시글들 넣음
     });
