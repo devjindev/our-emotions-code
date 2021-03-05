@@ -1,7 +1,7 @@
 {
-  "name": "my-used-market",
+  "name": "our-emotions",
   "version": "1.0.0",
-  "description": "My own used trading market production project.",
+  "description": "나와 우리의 감성, 감정, 하루를 함께 공유하고 공감하는 '우리의 감성' SNS 서비스 어플리케이션",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app"
