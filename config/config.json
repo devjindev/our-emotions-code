@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "000216",
-    "database": "myUsedMarket",
+    "database": "our-emotions",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
