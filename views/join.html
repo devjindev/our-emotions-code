@@ -1,0 +1,32 @@
+<!--* html - joinArea (회원가입 폼) -->
+
+{% extends 'layout.html' %}
+
+{% block join %}
+<section class="joinArea">
+  <form action="/auth/join" method="post">
+    <fieldset>
+      <hr>
+      <ul>
+        <li>
+          <label for="joinEmail">이메일</label>
+          <input type="email" name="email" id="joinEmail" placeholder="'@'를 포함해 입력해주세요." required>
+        </li>
+        <li>
+          <label for="joinNick">닉네임</label>
+          <input type="text" name="nick" id="joinNick" required>
+        </li>
+        <li>
+          <label for="joinPW">비밀번호</label>
+          <input type="password" name="password" id="joinPW" required>
+        </li>
+      </ul>
+      <!--! 회원가입 에러있으면 -->
+      {% if joinError %}
+        <span class="error">{{joinError}}</span>
+      {% endif %}
+      <button type="submit">submit</button>
+    </fieldset>
+  </form>
+</section>
+{% endblock %}

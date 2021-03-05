@@ -1,0 +1,51 @@
+<!--* html - mainArea (해시태그 검색, 게시글 목록) -->
+
+{% extends 'layout.html' %}
+
+{% block content %}
+  <section class="mainArea">
+    <!--! user가 있으면 (로그인 한 상태면) -->
+    {% if user %}
+      <!--? 글쓰기 버튼 -->
+      <a href="/write"><i class="fas fa-pen"></i></a>
+    {% endif %}
+
+    <!--! 로그인 상관 X (한 상태, 안 한 상태 모두 표시) -->
+    <!--? 게시글 목록 -->
+    {% for twit in twits %}
+      <div class="postList">
+        <input id="twit-user-id" type="hidden" value="{{twit.user.id}}">
+        <input id="twit-id" type="hidden" value="{{twit.id}}">
+        <div>
+          <!--? 게시글 작성자 닉네임 -->
+          <h3>{{twit.user.nick}}</h3>
+          <!--? 팔로잉 -->
+          <ul>
+            <!--! 사용자 팔로잉들(배열)을 사용자 팔로잉들 ID(새로운 배열)로 만듬 - 거기에 게시글 작성자 ID 포함하냐 => true/flase -->
+            <!--! 사용자가 접속했고, 사용자 ID가 게시글 작성자 ID가 아니고, ❗!true = false(팔로잉 안 했으면)면 -->
+            {% if user and user.id !== twit.user.id and not followingsIdList.includes(twit.user.id) %}
+              <li><button class="follow btn">팔로잉</button></li>
+            <!--! 사용자가 접속했고, 사용자 ID가 게시글 작성자 ID가 아니고, true(팔로잉 했으면)면 -->
+            {% elseif user and user.id !== twit.user.id and followingsIdList.includes(twit.user.id) %}
+              <li><button class="unfollow btn">언팔로우</button></li>
+            {% endif %}
+          </ul>
+          <!--? 게시글 삭제 -->
+          <!--! 로그인 했고, 사용자 ID == 게시글 작성자 ID면 (내 게시글이면) -->
+          {% if user and user.id == twit.user.id %}
+            <div><button class="delete btn">삭제</button></div>
+          {% endif %}
+        </div>
+        <!--? 게시글 내용 -->
+        <p>{{twit.content}}</p>
+        <!--? 게시글 이미지 -->
+        <!--! 게시글에 이미지가 있으면 -->
+        {% if twit.img %}
+          <img src="{{twit.img}}" alt="thumbnail">
+        {% endif %}
+        <!--? 좋아요 -->
+        <button class="like"><i class="fas fa-heart"></i>like</button>
+      </div>
+    {% endfor %}
+  </section>
+{% endblock %}

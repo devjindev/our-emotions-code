@@ -1,0 +1,188 @@
+/*? content - mainArea */
+/* postWrite */
+.mainArea {
+  position: relative;
+}
+.mainArea > a {
+  margin-left: auto;
+  margin-bottom: 17px;
+  transition: all 0.3s ease-in;
+  border: 1px solid transparent;
+}
+.mainArea > a:hover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  color: var(--color-blue3);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-blue3);
+  border-radius: 20px;
+}
+.mainArea > a:hover::after {
+  content: "write";
+  margin-left: 8px;
+  text-transform: uppercase;
+}
+/* postList */
+.mainArea .postList {
+  padding: 20px 2%;
+  border: 1px solid var(--color-blue1);
+  margin-bottom: 10px;
+}
+.mainArea .postList > div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.mainArea .postList > div > h3 {
+  font-weight: var(--weight-bold);
+  line-height: 21px;
+}
+.mainArea .postList > div > ul {
+  display: flex;
+}
+.mainArea .postList > div > ul li {
+  margin-left: 10px;
+}
+.mainArea .postList > div > div {
+  margin-left: auto;
+}
+.mainArea .postList > p {
+  width: 96%;
+  white-space: normal;
+  margin-bottom: 20px;
+}
+.mainArea .postList > img {
+  display: block;
+  margin: 0 auto;
+  max-width: 80%;
+  margin-bottom: 30px;
+}
+.mainArea .postList > ul {
+  display: flex;
+}
+.mainArea .postList > button {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  color: var(--color-light-grey);
+  font-size: var(--font-small);
+  text-transform: uppercase;
+}
+.mainArea .postList > button i {
+  font-size: var(--font-medium);
+  transition: all 0.1s ease-in;
+  margin-right: 7px;
+}
+.mainArea .postList > button:hover i {
+  color: var(--color-red);
+  transform: scale(1.1);
+}
+.mainArea .postList > button.like-click i {
+  color: var(--color-red);
+}
+
+/*?  content - wirteArea */
+.writeArea form fieldset > textarea {
+  padding: 20px;
+  width: 100%;
+  height: 250px;
+  border: 1px solid var(--color-blue1);
+  resize: none;
+  margin-bottom: 15px;
+}
+.writeArea form fieldset > ul {
+  display: block;
+}
+.writeArea form fieldset > ul li:nth-of-type(1),
+.writeArea form fieldset > ul li:nth-of-type(2),
+.writeArea form fieldset > ul li:nth-of-type(3) {
+  margin-bottom: 10px;
+}
+.writeArea form fieldset > ul li:nth-of-type(1) label {
+  display: flex;
+  align-items: center;
+  color: var(--color-pink4);
+  cursor: pointer;
+}
+.writeArea form fieldset > ul li:nth-of-type(1) label i {
+  font-size: 24px;
+  margin-right: 5px;
+}
+.writeArea form fieldset > ul li:nth-of-type(1) input {
+  display: none;
+}
+.writeArea form fieldset > ul li:nth-of-type(2) img {
+  width: 100%;
+}
+.writeArea form fieldset > ul li:nth-of-type(3) {
+  text-align: right;
+}
+
+/*? content - profileArea */
+.profileArea table {
+  width: 100%;
+}
+.profileArea caption {
+  caption-side: top;
+  color: var(--color-black);
+  font-size: var(--font-medium);
+  font-weight: var(--weight-bold);
+  margin-bottom: 20px;
+}
+.profileArea table tbody tr:not(:nth-of-type(1)) {
+  height: 130px;
+}
+.profileArea table tbody tr th,
+.profileArea table tbody tr td {
+  padding: 15px 2%;
+  border: 1px solid var(--color-blue1);
+}
+.profileArea table tbody tr th {
+  font-weight: var(--weight-reaular);
+  background-color: var(--color-light-white);
+  width: 20%;
+}
+.profileArea table tbody tr td {
+  width: 80%;
+}
+.profileArea table tbody tr:nth-of-type(1) td form {
+  display: flex;
+}
+.profileArea table tbody tr:nth-of-type(1) td form input {
+  width: 40%;
+}
+.profileArea table tbody tr:nth-of-type(1) td form button {
+  width: 10%;
+  min-width: 50px;
+}
+
+/*? errorArea */
+.errorArea h2 {
+  font-size: var(--font-medium);
+  font-weight: var(--weight-bold);
+}
+.errorArea h3 {
+  font-size: var(--font-medium);
+}
+.errorArea pre {
+  font-size: var(--font-regular);
+}
+
+@media screen and (max-width: 767px) {
+  /*? content - profileArea */
+  .profileArea table {
+    font-size: var(--font-small);
+  }
+  .profileArea table tbody tr:nth-of-type(1) td form input {
+    width: 85%;
+    padding: 0;
+  }
+  .profileArea table tbody tr:nth-of-type(1) td form button {
+    width: 15%;
+    padding: 0;
+    min-width: 0;
+  }
+}

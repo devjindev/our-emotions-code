@@ -1,0 +1,11 @@
+<!--* pug - error (에러 내역) -->
+
+{% extends 'layout.html' %}
+
+{% block content %}
+  <section class="errorArea">
+    <h2>{{message}}</h2>
+    <h3>{{error.status}}</h3>
+    <pre>{{error.stack}}</pre>
+  </section>
+{% endblock %}

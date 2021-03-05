@@ -1,0 +1,47 @@
+<!--* html - profileArea (사용자 팔로잉 및 팔로워 목록) -->
+
+{% extends 'layout.html' %}
+
+{% block content %}
+  <section class="profileArea">
+    <table>
+      <caption>내 프로필</caption>
+      <tbody>
+        <!--? 닉네임 변경 -->
+        <tr>
+          <th>닉네임 변경</th>
+          <td>
+            <form action="/user/profile" method="post">
+              <input type="text" name="nick" placeholder="변경할 닉네임을 입력하세요">
+              <button>확인</button>
+            </form>
+          </td>
+        </tr>
+        <!--? 팔로잉 목록 -->
+        <tr>
+          <th>팔로잉 목록</th>
+          <td>
+            <!--! user.followings면 -->
+            {% if user.Followings %}
+              {% for following in user.Followings %}
+                <span>{{following.nick}}</span>
+              {% endfor %}
+            {% endif %}
+          </td>
+        </tr>
+        <!--? 팔로워 목록 -->
+        <tr>
+          <th>팔로워 목록</th>
+          <td>
+            <!--! user.Followers면 -->
+            {% if user.Followers %}
+              {% for follower in user.Followers %}
+                <span>{{follower.nick}}</span>
+              {% endfor %}
+            {% endif %}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+{% endblock %}

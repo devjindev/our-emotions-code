@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <section class="writeArea">
+        <!--! user가 있으면 (로그인 한 상태면) -->
+        {% if user %}
+            <!--? 게시글 업로드 폼 -->
+            <form action="/post" method="post" enctype="multipart/form-data">
+                <fieldset>
+                    <textarea name="content" maxlength="1000" placeholder="본문에 #을 이용하여 태그를 사용해보세요!" autofocus></textarea>
+                    <ul>
+                        <li>
+                            <label id="img-label" for="img"><i class="far fa-image"></i>사진 선택</label>
+                            <input id="img" type="file" accept="image/*">
+                        </li>
+                        <li>
+                            <img id="img-preview" src="" alt="preview" style="display: none;" width="250">
+                            <input id="img-url" type="hidden" name="url">
+                        </li>
+                        <li>
+                            <button type="submit">완료</button>
+                        </li>
+                    </ul>
+                </fieldset>
+            </form>
+        {% endif %}
+    </section>
+{% endblock %}

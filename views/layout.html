@@ -1,0 +1,128 @@
+<!--* html - userArea (사용자 정보) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/767939aa46.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/import.css">
+</head>
+<body class="before-start">
+  <!-- loading -->
+  <!-- <div class="loading">
+    <h1><img src="/logoLoading" alt="logo"></h1>
+  </div> -->
+
+  <!--? loginArea -->
+  <!--! user가 없으면 (로그인 안 한 상태면) -->
+  {% if not user %}
+    <section class="loginArea">
+        <!-- 로그인 폼 -->
+        <form action="/auth/login" method="post">
+          <fieldset>
+            <legend>login</legend>
+            <ul>
+              <li>
+                <input type="email" name="email" id="loginEmail" placeholder="Email" required autofocus>
+              </li>
+              <li>
+                <input type="password" name="password" id="loginPW" placeholder="PW" required>
+              </li>
+            </ul>
+            <!--! 로그인 에러있으면 -->
+            {% if loginError %}
+              <span class="error">{{loginError}}</span>
+            {% endif %}
+            <ul>
+              <li><button type="submit">login</button></li>
+              <li><a href="/join">join us</a></li>
+              <li><a href="/auth/kakao">
+                <img src="snsKakao" alt="kokao">
+                카카오 계정으로 로그인
+              </a></li>
+            </ul>
+          </fieldset>
+        </form>
+        <!--? joinArea -->
+        {% block join %}
+        {% endblock %}
+    </section>
+  {% endif %}
+
+  <!--? userArea -->
+  <!--! user와 userID가 있으면 (로그인한 상태면) -->
+  {% if user and user.id %}
+    <div class="home">
+      <!--? header -->
+      <header>
+        <button class="hambuger"><i class="far fa-user"></i></button>
+        <h1><a href="/"><img src="/logoHeader" alt="logo"></a></h1>
+        <a href="/auth/logout">logout</a>
+      </header>
+
+      <!--? content -->
+      <div class="content">
+        <div class="leftSide">
+          <!--? userArea -->
+          <section class="userArea">
+            <h2>
+              <span>{{user.nick}}</span>  
+              님, 반가워요 🤍
+            </h2>
+            <ul>
+              <li>
+                팔로워
+                <span>{{user.Followers and user.Followers.length or 0}}</span>
+              </li>
+              <li>
+                팔로잉
+                <span>{{user.Followings and user.Followings.length or 0}}</span>
+              </li>
+            </ul>
+            <input id="my-id" type="hidden" value="{{user.id}}">
+            <a href="/profile">profile</a>
+          </section>
+
+          <!--? hashtagArea -->
+          <section class="hashtagArea">
+            <form action="/post/hashtag">
+              <fieldset>
+                <input type="text" name="hashtag" placeholder="해시태그 검색">
+                <button><i class="fas fa-search"></i></button>
+              </fieldset>
+            </form>
+          </section>
+        </div>
+
+        <!--? contentArea -->
+        {% block content %}
+        {% endblock %}
+      </div>
+
+      <!--? footer -->
+      <footer>
+        <div>
+            <div>
+                <span>CONTACT ME</span>
+                <span>
+                    hongyujin0216@gmail.com
+                    <a href="mailto:hongyoujin0216@gmail.com"><i class="far fa-envelope"></i></a>
+                </span>
+            </div>
+            <div></div>
+            <div></div>
+        </div>
+        <span>
+            <a href="https://github.com/devjindev" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://devjindev.tistory.com/" target="_blank">T</a>
+        </span>
+        <p>Copyright © 2021 yujin hong all rights reserved</p>
+    </footer>
+    </div>
+  {% endif %}
+  <script src="/js/main.js"></script>
+</body>
